@@ -1,0 +1,19 @@
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    environment: production
+
+   defaults:
+      run:
+        shell: bash
+        working-directory: ./infra_tf
+       
+        
+  runs:
+    using: "composite"
+    steps:
+    - uses: actions/checkout@master
+    - uses: fugue/regula-action@v1.5.0
+      with:
+        input_path: infra_tf
